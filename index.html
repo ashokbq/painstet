@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.0.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/jquery-1.9.1.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery.mobile-1.3.0.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script>
+$(document).ready(function() {	
+				$('#loginform').validate({
+				rules: {
+					hospid: {
+						required: true					
+					},
+					userid: {
+						required: true					
+					},
+					password: {
+						required: true
+					}
+				}
+			});
+
+	$( "#login" ).click(function() {
+		$("#loginform").validate().element("#hospid");
+		$("#loginform").validate().element("#userid");
+ 		$("#loginform").validate().element("#password");
+    
+  var hospid=document.getElementById("hospid").value;
+  var userid=document.getElementById("userid").value;
+  var password=document.getElementById("password").value;
+  
+  $.getJSON("http://www.painstet.bqproject.com/login.php?jsoncallback=?&hospid="+hospid+"&userid="+userid+"&password="+password, function(data){   
+
+if(data['err']==1)
+{
+	alert("Error");
+}
+else
+{
+	alert("Successfull");
+	var hosp_name=data['hospital_name'];
+	var hosp_id=data['hospital_id'];
+	var count=data['country'];
+	var city_name=data['city'];
+window.location = 'patientmgmt.html?&hospid='+hosp_id+'&hospital_name='+hosp_name+'&country='+count+'&city='+city_name;
+}
+  });
+  
+		});
+	});
+</script>
+</head>
+<body>
+<div id="container" data-role="page" class="home">
+  <div data-role="content" class="content">
+    <div class="logindiv">
+      <form id="loginform" method="post" action="">
+        <div data-role="fieldcontain">
+          <div id="labelhead">
+            <label for="hospid">Hospital ID:</label>
+          </div>
+          <input type="text" name="hospid" id="hospid" />
+        </div>
+        <div data-role="fieldcontain">
+          <div id="labelhead">
+            <label for="userid">User ID:</label>
+          </div>
+          <input type="text" name="userid" id="userid" />
+        </div>
+        <div data-role="fieldcontain">
+          <div id="labelhead">
+            <label for="password">Password:</label>
+          </div>
+          <input type="password" name="password" id="password" />
+        </div>
+        <div class="loginbtn">
+          <input type="button" value="Login" id="login"/>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- content --> 
+</div>
+<!-- page -->
+</body>
+</html>

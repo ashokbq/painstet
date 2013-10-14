@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.0.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/jquery-1.9.1.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery.mobile-1.3.0.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script>
+$(document).ready(function() {
+	var hospid=localStorage.getItem('hospid'); 
+	var hospital_name=localStorage.getItem('hospital_name'); 
+	var country=localStorage.getItem('country');
+	var city=localStorage.getItem('city');
+
+	$(".hospname").append(hospital_name);
+	$(".countryname").append(country);  	
+	$(".cityname").append(city);
+	
+      $( "#patdob" ).datepicker({
+onSelect: function(dateText, inst) {
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
+			if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = dd+'/'+mm+'/'+yyyy; 
+		var age=yyyy-inst.selectedYear;
+			//alert(age);
+		$("#patage").val(age);
+	   },
+		yearRange: "-100:+0",
+  		showButtonPanel: true,
+	    changeMonth: true,
+        changeYear: true,
+		maxDate: "0M +0D"
+	  });
+
+
+ 
+$('#searchuserbtn').click(function(){
+	var patid=document.getElementById("updatepatid").value;
+	var patname=document.getElementById("patname").value;
+	var patdob=document.getElementById("patdob").value;
+	var patown=document.getElementById("patown").value;
+	var patdiag=document.getElementById("patdiag").value;
+	var agegroupfrom=document.getElementById("agegroupfrom").value;
+	var agegroupto=document.getElementById("agegroupto").value;
+	
+	
+$.getJSON("http://www.painstet.bqproject.com/search.php?jsoncallback=?&patid="+patid+"&patname="+patname+"&patdob="+patdob+"&patown="+patown+"&patdiag="+patdiag+"&agegroupfrom="+agegroupfrom+"&agegroupto="+agegroupto, function(data){   
+var items='';
+ var pat_id='',pat_name='',pat_dob='',pat_diag='',age='';	
+// alert("before"+data.patient_id);
+		  $.each(data,function(i,item){
+            pat_id+=item.patient_id+',';
+			pat_name+=item.patient_name+',';
+			pat_dob+=item.birth_date+',';
+			pat_diag+=item.diagnosis+',';
+			age+=item.age+',';
+		//	alert(pat_id+','+pat_name+','+pat_dob+','+pa_town+','+age);
+		items+=	pat_id+','+pat_name+','+pat_dob+','+pat_diag+','+age;
+		
+			 localStorage.setItem('pa_id', pat_id);	
+			 localStorage.setItem('pa_name', pat_name);	
+			 localStorage.setItem('pa_dob', pat_dob);
+	         localStorage.setItem('pa_diag', pat_diag);
+    		 localStorage.setItem('pa_age', age);
+			 window.location="sel_patient.html";
+
+		  });
+var total = data.length; 	
+	 
+
+	localStorage.setItem('total', total);	  		
+ 	});
+});
+});
+</script>
+</head>
+<body>
+<div id="container" data-role="page">
+  <div data-role="content" class="content">
+    <header>
+      <div class="dblue">
+        <h2> search for patient </h2>
+      </div>
+      <div class="lblue"> </div>
+    </header>
+    <div class="clear"> </div>
+    <div class="updatepatient">
+      <h3 class="hospname"> Hospital Name : </h3>
+      <h3 class="cityname"> City : </h3>
+      <h3 class="countryname"> Country : </h3>
+      <div class="patientreg">
+        <form id="regform" method="post" action="">
+          <div data-role="fieldcontain">
+            <div id="labelhead">
+              <label for="updatepatid">Patient ID:</label>
+            </div>
+            <input type="text" name="updatepatid" id="updatepatid" />
+          </div>
+          <div data-role="fieldcontain">
+            <div id="labelhead">
+              <label for="patname">Patient Name:</label>
+            </div>
+            <input type="text" name="patname" id="patname" />
+          </div>
+          <div data-role="fieldcontain">
+            <div id="labelhead">
+              <label for="patdob">Patient DOB:</label>
+            </div>
+            <input type="text" name="patdob" id="patdob" />
+          </div>
+          <div data-role="fieldcontain">
+            <div id="labelhead">
+              <label for="patown">Town:</label>
+            </div>
+            <input type="text" name="patown" id="patown" />
+          </div>
+          <div data-role="fieldcontain">
+            <div id="labelhead">
+              <label for="patdiag">Diagnosis:</label>
+            </div>
+            <select name="patdiag" id="patdiag" >
+              <option> Select </option>
+              <option> Value1 </option>
+              <option> Value2</option>
+            </select>
+          </div>
+          <div data-role="fieldcontain" class="multidrop">
+            <div id="labelhead">
+              <label for="agegroup">Age Group:</label>
+            </div>
+            <select name="agegroup" id="agegroupfrom" >
+              <option> From </option>
+              <option> 10 </option>
+              <option> 20 </option>
+            </select>
+            <select name="agegroup" id="agegroupto" >
+              <option> To </option>
+              <option> 50 </option>
+              <option> 30 </option>
+            </select>
+          </div>
+          <div class="searchuserbtn">
+            <input type="button" value="" id="searchuserbtn"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- content --> 
+</div>
+<!-- page -->
+</body>
+</html>

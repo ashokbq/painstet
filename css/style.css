@@ -1,0 +1,484 @@
+html, body {
+	height: 768px;
+	width: 1024px;
+	text-align: left;
+	font-family: Myriad Pro !important;
+	text-shadow: none;
+	margin: 0px;
+	padding: 0px;
+}
+.ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-c button {
+	font-family: Myriad Pro !important;
+}
+.clear {
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+#container
+{
+	background-image: url(../images/bg.png);
+	background-repeat: no-repeat;
+	width: 1280px;
+	height: 800px;
+}
+.container 
+{
+		background-image: url(../images/bg.png);
+	background-repeat: no-repeat;
+	width:1024px !important;
+	height: 768px;
+}
+.content {
+		margin: 5%;
+}
+.logindiv {
+	margin: 0 auto;
+	width: 600px;
+	padding-top: 30%;
+}
+label.error {
+	color: red;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 1.4;
+	margin-top: 0.5em;
+	width: 100%;
+	float: none;
+	text-align: center;
+}
+ @media screen and (orientation: portrait) {
+label.error {
+	margin-left: 0;
+	display: block;
+}
+}
+ @media screen and (orientation: landscape) {
+label.error {
+	display: inline-block;
+	margin-left: 22%;
+}
+}
+.ui-field-contain label.ui-input-text {
+	width: 100%;
+}
+.ui-body-c, .ui-overlay-c {
+    border: 1px solid #1275BC;
+}
+.ui-corner-all {
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+}
+.ui-btn-up-c {
+    color: #333333;
+}
+.ui-btn-active:visited, .ui-btn-active:hover, .ui-btn-active a.ui-link-inherit{
+    color: #333333;
+}
+.ui-field-contain {
+margin: 2em 0;
+}
+div.ui-input-text {
+	padding: 0;
+}
+#hospid {
+	background-image: url("../images/idicon.png");
+	background-repeat: no-repeat;
+	height: 30px;
+	padding-left: 40px;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+#userid {
+	background-image: url("../images/usericon.png");
+	background-repeat: no-repeat;
+	height: 30px;
+	padding-left: 40px;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+#password {
+	background-image: url("../images/passicon.png");
+	background-repeat: no-repeat;
+	height: 30px;
+	padding-left: 40px;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+input[type="text"], input[type="password"] {
+	margin: 5px;
+	border: 1px solid #8FACDA;
+	background-color: #F1F1F2;
+}
+#loginform #labelhead {
+	float: left;
+	position: relative;
+	width: 110px;
+	margin: 5px;
+	text-align: left;
+}
+.loginbtn {
+	margin-left: 125px;
+}
+.loginbtn #login {
+	background-image: url("../images/loginbtn.png");
+	background-repeat: repeat;
+	color: #FFFFFF;
+	padding: 7px;
+	text-transform: uppercase;
+	background-color: transparent;
+	border: none;
+}
+.home .ui-btn-up-c, .home .ui-btn-down-c, .home .ui-btn-hover-c, .home .ui-btn-active {
+	background: url("../images/loginbtn.png") !important;
+	color: #FFF !important;
+	border-radius: 0px;
+	border: none;
+	text-transform: uppercase;
+}
+.ui-btn-up-c, .ui-btn-down-c, .ui-btn-hover-c, .ui-btn-active {
+	border: none;
+	background: none !important;
+	border-radius: 0px;
+}
+.ui-shadow {
+	box-shadow: none;
+}
+#newpatient {
+	margin-left: 35%;
+	margin-top: -5%;
+}
+#sync
+{
+	margin-left: 70%;
+	margin-top: -5%;
+}
+.ui-content {
+	padding: 0px;
+}
+.ui-btn-inner {
+	border-top: medium none;
+}
+.ui-body-c, .ui-overlay-c {
+border: none;
+}
+/* new user Registration */
+.adduserbtn {
+	background-image: url("../images/savenhome.png");
+	background-repeat: no-repeat;
+	float: right;
+	margin-right: 10%;
+	width: 175px;
+	height: 45px;
+}
+#patid,
+#patage
+{
+opacity: 1;
+color: #000;
+background-color: #FFF;
+border: 1px solid #000;
+}
+
+header {
+
+}
+.dblue {
+	background-color: #0976BC;
+	float: left;
+	width: 70%;
+	margin-right: 5px;
+}
+.dblue h2 {
+	color: #FFF;
+font-size: 16px;
+font-weight: normal;
+padding: 5px 10px;
+text-transform: uppercase;
+height: 15px;
+}
+.lblue {
+	background-color: #00b6f1;
+	float: left;
+	height: 51px;
+	width: 20%;
+}
+.hospname {
+	color: #1275BC;
+	float: left;
+	font-weight: normal;
+	margin: 0 0 0 10%;
+	padding: 0;
+	width: 30%;
+}
+.countryname {
+	color: #1275BC;
+	font-weight: normal;
+	margin: 0 0 0;
+	padding: 0;
+}
+.cityname
+{
+	color: #1275BC;
+	font-weight: normal;
+	margin: 0 0 0;
+	padding: 0;
+	width:20%;
+    float: left;
+}
+.patientreg {
+	margin-left: 5%;
+margin-top: 7%;
+}
+
+#regform #labelhead {
+	float: left;
+	position: relative;
+	width: 110px;
+	margin: 5px;
+	text-align: left;
+}
+
+
+
+#regform .ui-field-contain .ui-input-search,
+#regform .ui-field-contain div.ui-input-text,
+#regform .ui-field-contain .ui-select {
+     width: 30%;
+}
+
+.leftdata {
+    float: left;
+    width: 60%;
+   margin: 1em 0;
+}
+.rightdata {
+    float: left;
+    width: 40%;
+}
+.ui-select {
+    border: 1px solid #1275BC;
+}
+
+#regform #labelhead .ui-select {
+    border:none !important;
+}
+
+/* Search user */
+.updatepatient 
+{
+
+margin-top: 3%;
+width: 835px;
+min-height: 380px;
+font-weight: normal;
+padding: 1%;
+}
+
+.searchuserbtn
+ {
+    background-image: url("../images/searchbtn.png");
+    background-repeat: no-repeat;
+    float: right;
+    height: 45px;
+    margin-right: 10%;
+    width: 175px;
+}
+#regform .multidrop.ui-field-contain .ui-select
+{
+  margin-right: 1%;
+    width: 13%;
+}
+
+
+#regform .multidrop.ui-field-contain .ui-select .ui-btn-inner {
+    font-size: 10px;
+}
+
+/*Select user */
+
+.alternatecol td
+{
+	background-color:#75d1f8;
+color: #000;
+text-shadow: 0 0px;
+}
+.alternatecol2 td
+{
+	background-color:#c2e8fb;
+	color: #000;
+text-shadow: 0 0px;
+}
+.patientdet
+{
+margin-top: 3%;
+}
+
+.patientdet td {
+padding: 5px;
+}
+.buttoncontainer
+{
+    margin-top: 18%;
+    position: relative;
+}
+
+.selectbtn
+{
+	 background-image: url("../images/selectnadd.png");
+    background-repeat: no-repeat;
+    float: left;
+    height: 45px;
+    margin-right: 10%;
+    width: 175px;
+}
+
+.displaybtn
+{
+		 background-image: url("../images/selectndisp.png");
+    background-repeat: no-repeat;
+    float: left;
+    height: 45px;
+    margin-right: 10%;
+    width: 175px;
+}
+
+.searchagnbtn
+{
+		 background-image: url("../images/searchagn.png");
+    background-repeat: no-repeat;
+    float: left;
+    height: 45px;
+    margin-right: 10%;
+    width: 175px;
+}
+
+.patid {
+	color: #1275BC;
+	float: left;
+	font-weight: normal;
+	margin: 1% 0 0 10%;
+	padding: 0;
+	width: 30%;
+}
+.todate {
+	color: #1275BC;
+	font-weight: normal;
+	margin: 1% 0 0;
+	padding: 0;
+}
+.patname
+{
+	color: #1275BC;
+	font-weight: normal;
+	margin:1% 0 0;
+	padding: 0;
+	width:20%;
+    float: left;
+}
+.addpatient 
+{
+background-color: #1475BC;
+margin-top: 3%;
+width: 835px;
+min-height: 380px;
+color: #FFF;
+font-weight: normal;
+padding: 1%;
+}
+
+.ui-controlgroup-horizontal .ui-checkbox .ui-btn-inner, .ui-controlgroup-horizontal .ui-radio .ui-btn-inner {
+padding: 4em 8px;
+}
+.ui-controlgroup, fieldset.ui-controlgroup {
+margin: 2.5em 0;
+
+}
+.ui-checkbox input, .ui-radio input {
+left: 45px;
+top: 15%;
+}
+
+.ui-controlgroup .ui-radio #nohurt
+{
+background-image: url("../images/0.png") !important;
+background-repeat: no-repeat !important;	
+width:100px;
+
+}
+.ui-controlgroup .ui-radio #lillbit
+{
+background-image: url("../images/1.png") !important;
+background-repeat: no-repeat !important;	
+width:100px;
+}
+.ui-controlgroup .ui-radio #lillmore
+{
+background-image: url("../images/3.png") !important;
+background-repeat: no-repeat !important;	
+width:100px;
+}
+.ui-controlgroup .ui-radio #evenmore
+{
+background-image: url("../images/4.png") !important;
+background-repeat: no-repeat !important;	
+width:100px;
+}
+.ui-controlgroup .ui-radio #wholelot
+{
+background-image: url("../images/5.png") !important;
+background-repeat: no-repeat !important;	
+width:100px;
+}
+.ui-controlgroup .ui-radio #hurtsworst
+{
+background-image: url("../images/6.png") !important;
+background-repeat: no-repeat !important;	
+width:100px;
+}
+
+
+
+#slidingcont .ui-btn-up-c,
+#slidingcont .ui-btn-down-c,
+#slidingcont .ui-btn-hover-c,
+#slidingcont .ui-btn-active 
+ {
+border: 1px solid #FFF !important;
+background: #FFF !important;
+border-radius: 0px;
+}
+
+.addpatient .ui-slider-track.ui-mini {
+height: 0px;
+}
+
+.addpatient #leftfields {
+    width: 73%;
+	float:left;
+}
+
+.addpatient #rightfields
+{
+	float:left;
+	width:27%;
+}
+
+.searchnewbtn
+{
+background-image: url("../images/savennew.png");
+background-repeat: no-repeat;
+height: 45px;
+margin-top: 2%;
+width: 175px;
+text-align: center;
+float: none;
+}
+
+
+/* Display patient details */
+
+#seldisplay .ui-radio input {
+left: 20px;
+}
