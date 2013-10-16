@@ -16,27 +16,25 @@ html, body {
 	height: 0;
 	visibility: hidden;
 }
-#container
-{
+#container {
 	background-image: url(../images/bg.png);
 	background-repeat: no-repeat;
 	width: 1280px;
 	height: 800px;
 }
-.container 
-{
-		background-image: url(../images/bg.png);
+.container {
+	background-image: url(../images/bg.png);
 	background-repeat: no-repeat;
-	width:1024px !important;
-	height: 768px;
+	width: 1280px !important;
+	height: 800px;
 }
 .content {
-		margin: 5%;
+	margin: 5%;
 }
 .logindiv {
 	margin: 0 auto;
 	width: 600px;
-	padding-top: 30%;
+	padding-top: 20%;
 }
 label.error {
 	color: red;
@@ -64,20 +62,20 @@ label.error {
 	width: 100%;
 }
 .ui-body-c, .ui-overlay-c {
-    border: 1px solid #1275BC;
+	border: 1px solid #1275BC;
 }
 .ui-corner-all {
 	-webkit-border-radius: 0px;
 	border-radius: 0px;
 }
 .ui-btn-up-c {
-    color: #333333;
+	color: #333333;
 }
-.ui-btn-active:visited, .ui-btn-active:hover, .ui-btn-active a.ui-link-inherit{
-    color: #333333;
+.ui-btn-active:visited, .ui-btn-active:hover, .ui-btn-active a.ui-link-inherit {
+	color: #333333;
 }
 .ui-field-contain {
-margin: 2em 0;
+	margin: 2em 0;
 }
 div.ui-input-text {
 	padding: 0;
@@ -149,8 +147,7 @@ input[type="text"], input[type="password"] {
 	margin-left: 35%;
 	margin-top: -5%;
 }
-#sync
-{
+#sync {
 	margin-left: 70%;
 	margin-top: -5%;
 }
@@ -161,7 +158,7 @@ input[type="text"], input[type="password"] {
 	border-top: medium none;
 }
 .ui-body-c, .ui-overlay-c {
-border: none;
+	border: none;
 }
 /* new user Registration */
 .adduserbtn {
@@ -172,17 +169,13 @@ border: none;
 	width: 175px;
 	height: 45px;
 }
-#patid,
-#patage
-{
-opacity: 1;
-color: #000;
-background-color: #FFF;
-border: 1px solid #000;
+#patid, #patage {
+	opacity: 1;
+	color: #000;
+	background-color: #FFF;
+	border: 1px solid #000;
 }
-
 header {
-
 }
 .dblue {
 	background-color: #0976BC;
@@ -192,11 +185,11 @@ header {
 }
 .dblue h2 {
 	color: #FFF;
-font-size: 16px;
-font-weight: normal;
-padding: 5px 10px;
-text-transform: uppercase;
-height: 15px;
+	font-size: 16px;
+	font-weight: normal;
+	padding: 5px 10px;
+	text-transform: uppercase;
+	height: 15px;
 }
 .lblue {
 	background-color: #00b6f1;
@@ -218,20 +211,18 @@ height: 15px;
 	margin: 0 0 0;
 	padding: 0;
 }
-.cityname
-{
+.cityname {
 	color: #1275BC;
 	font-weight: normal;
 	margin: 0 0 0;
 	padding: 0;
-	width:20%;
-    float: left;
+	width: 20%;
+	float: left;
 }
 .patientreg {
 	margin-left: 5%;
-margin-top: 7%;
+	margin-top: 7%;
 }
-
 #regform #labelhead {
 	float: left;
 	position: relative;
@@ -239,121 +230,93 @@ margin-top: 7%;
 	margin: 5px;
 	text-align: left;
 }
-
-
-
-#regform .ui-field-contain .ui-input-search,
-#regform .ui-field-contain div.ui-input-text,
-#regform .ui-field-contain .ui-select {
-     width: 30%;
+#regform .ui-field-contain .ui-input-search, #regform .ui-field-contain div.ui-input-text, #regform .ui-field-contain .ui-select {
+	width: 30%;
 }
-
 .leftdata {
-    float: left;
-    width: 60%;
-   margin: 1em 0;
+	float: left;
+	width: 60%;
+	margin: 1em 0;
 }
 .rightdata {
-    float: left;
-    width: 40%;
+	float: left;
+	width: 40%;
 }
 .ui-select {
-    border: 1px solid #1275BC;
+	border: 1px solid #1275BC;
 }
-
 #regform #labelhead .ui-select {
-    border:none !important;
+	border: none !important;
 }
-
 /* Search user */
-.updatepatient 
-{
-
-margin-top: 3%;
-width: 835px;
-min-height: 380px;
-font-weight: normal;
-padding: 1%;
+.updatepatient {
+	margin-top: 3%;
+	width: 835px;
+	min-height: 380px;
+	font-weight: normal;
+	padding: 1%;
 }
-
-.searchuserbtn
- {
-    background-image: url("../images/searchbtn.png");
-    background-repeat: no-repeat;
-    float: right;
-    height: 45px;
-    margin-right: 10%;
-    width: 175px;
+.searchuserbtn {
+	background-image: url("../images/searchbtn.png");
+	background-repeat: no-repeat;
+	float: right;
+	height: 45px;
+	margin-right: 10%;
+	width: 175px;
 }
-#regform .multidrop.ui-field-contain .ui-select
-{
-  margin-right: 1%;
-    width: 13%;
+#regform .multidrop.ui-field-contain .ui-select {
+	margin-right: 1%;
+	width: 13%;
 }
-
-
 #regform .multidrop.ui-field-contain .ui-select .ui-btn-inner {
-    font-size: 10px;
+	font-size: 10px;
 }
-
 /*Select user */
 
-.alternatecol td
-{
-	background-color:#75d1f8;
-color: #000;
-text-shadow: 0 0px;
-}
-.alternatecol2 td
-{
-	background-color:#c2e8fb;
+.alternatecol td {
+	background-color: #75d1f8;
 	color: #000;
-text-shadow: 0 0px;
+	text-shadow: 0 0px;
 }
-.patientdet
-{
-margin-top: 3%;
+.alternatecol2 td {
+	background-color: #c2e8fb;
+	color: #000;
+	text-shadow: 0 0px;
 }
-
+.patientdet {
+	margin-top: 3%;
+}
 .patientdet td {
-padding: 5px;
+	padding: 5px;
 }
-.buttoncontainer
-{
-    margin-top: 18%;
-    position: relative;
+.buttoncontainer {
+	margin-top: 18%;
+	position: relative;
 }
-
-.selectbtn
-{
-	 background-image: url("../images/selectnadd.png");
-    background-repeat: no-repeat;
-    float: left;
-    height: 45px;
-    margin-right: 10%;
-    width: 175px;
+.selectbtn {
+	background-image: url("../images/selectnadd.png");
+	background-repeat: no-repeat;
+	float: left;
+	height: 45px;
+	margin-right: 10%;
+	width: 175px;
 }
-
-.displaybtn
-{
-		 background-image: url("../images/selectndisp.png");
-    background-repeat: no-repeat;
-    float: left;
-    height: 45px;
-    margin-right: 10%;
-    width: 175px;
+.displaybtn {
+	background-image: url("../images/selectndisp.png");
+	background-repeat: no-repeat;
+	float: left;
+	height: 45px;
+	margin-right: 10%;
+	width: 175px;
 }
-
-.searchagnbtn
-{
-		 background-image: url("../images/searchagn.png");
-    background-repeat: no-repeat;
-    float: left;
-    height: 45px;
-    margin-right: 10%;
-    width: 175px;
+.searchagnbtn {
+	background-image: url("../images/searchagn.png");
+	background-repeat: no-repeat;
+	float: left;
+	height: 45px;
+	margin-right: 10%;
+	width: 175px;
 }
-
 .patid {
 	color: #1275BC;
 	float: left;
@@ -368,117 +331,143 @@ padding: 5px;
 	margin: 1% 0 0;
 	padding: 0;
 }
-.patname
-{
+.patname {
 	color: #1275BC;
 	font-weight: normal;
-	margin:1% 0 0;
+	margin: 1% 0 0;
 	padding: 0;
-	width:20%;
-    float: left;
+	width: 25%;
+	float: left;
 }
-.addpatient 
-{
-background-color: #1475BC;
-margin-top: 3%;
-width: 835px;
-min-height: 380px;
-color: #FFF;
-font-weight: normal;
-padding: 1%;
+.addpatient {
+	background-color: #1475BC;
+	margin-top: 3%;
+	width: 835px;
+	min-height: 380px;
+	color: #FFF;
+	font-weight: normal;
+	padding: 1%;
 }
-
 .ui-controlgroup-horizontal .ui-checkbox .ui-btn-inner, .ui-controlgroup-horizontal .ui-radio .ui-btn-inner {
-padding: 4em 8px;
+	padding: 4em 8px;
 }
 .ui-controlgroup, fieldset.ui-controlgroup {
-margin: 2.5em 0;
-
+	margin: 2.5em 0;
 }
 .ui-checkbox input, .ui-radio input {
-left: 45px;
-top: 15%;
+	left: 45px;
+	top: 15%;
 }
-
-.ui-controlgroup .ui-radio #nohurt
-{
-background-image: url("../images/0.png") !important;
-background-repeat: no-repeat !important;	
-width:100px;
-
+.ui-controlgroup .ui-radio #nohurt {
+	background-image: url("../images/0.png") !important;
+	background-repeat: no-repeat !important;
+	width: 92px;
 }
-.ui-controlgroup .ui-radio #lillbit
-{
-background-image: url("../images/1.png") !important;
-background-repeat: no-repeat !important;	
-width:100px;
+.ui-controlgroup .ui-radio #lillbit {
+	background-image: url("../images/1.png") !important;
+	background-repeat: no-repeat !important;
+	width: 92px;
 }
-.ui-controlgroup .ui-radio #lillmore
-{
-background-image: url("../images/3.png") !important;
-background-repeat: no-repeat !important;	
-width:100px;
+.ui-controlgroup .ui-radio #lillmore {
+	background-image: url("../images/3.png") !important;
+	background-repeat: no-repeat !important;
+	width: 92px;
 }
-.ui-controlgroup .ui-radio #evenmore
-{
-background-image: url("../images/4.png") !important;
-background-repeat: no-repeat !important;	
-width:100px;
+.ui-controlgroup .ui-radio #evenmore {
+	background-image: url("../images/4.png") !important;
+	background-repeat: no-repeat !important;
+	width: 92px;
 }
-.ui-controlgroup .ui-radio #wholelot
-{
-background-image: url("../images/5.png") !important;
-background-repeat: no-repeat !important;	
-width:100px;
+.ui-controlgroup .ui-radio #wholelot {
+	background-image: url("../images/5.png") !important;
+	background-repeat: no-repeat !important;
+	width: 92px;
 }
-.ui-controlgroup .ui-radio #hurtsworst
-{
-background-image: url("../images/6.png") !important;
-background-repeat: no-repeat !important;	
-width:100px;
+.ui-controlgroup .ui-radio #hurtsworst {
+	background-image: url("../images/6.png") !important;
+	background-repeat: no-repeat !important;
+	width: 92px;
 }
-
-
-
-#slidingcont .ui-btn-up-c,
-#slidingcont .ui-btn-down-c,
-#slidingcont .ui-btn-hover-c,
-#slidingcont .ui-btn-active 
- {
-border: 1px solid #FFF !important;
-background: #FFF !important;
-border-radius: 0px;
+#sliderstyle .ui-btn-up-c, #sliderstyle .ui-btn-down-c, #sliderstyle .ui-btn-hover-c, #sliderstyle .ui-btn-active {
+border: 1px solid #2373A5 !important;
+background: #5393C5 !important;
+font-weight: bold !important;
+color: #FFF !important;
+cursor: pointer !important;
+text-shadow: 0 1px 0 #3373A5 !important;
+text-decoration: none !important;
+background-image: -webkit-gradient(linear, left top, left bottom, from( #FFF ), to( #6FACD5 )) !important;
+background-image: -webkit-linear-gradient( #FFF, #6FACD5 ) !important;
+background-image: -moz-linear-gradient( #FFF, #6facd5 ) !important;
+background-image: -ms-linear-gradient( #FFF, #6facd5 ) !important;
+background-image: -o-linear-gradient( #FFF, #6facd5 ) !important;
+background-image: linear-gradient( #FFF, #6FACD5 ) !important;
+font-family: Helvetica, Arial, sans-serif !important;
+border-radius: 1em !important;
 }
-
+.arrVals{margin:0; padding:0;margin-left: 8%;}
+.arrVals li{display:block; float:left; margin:5px 3.2% 0% 4.3%; list-style-type:none; padding:0;}
 .addpatient .ui-slider-track.ui-mini {
-height: 0px;
+	height: 3px;
 }
-
 .addpatient #leftfields {
-    width: 73%;
-	float:left;
+	width: 73%;
+	float: left;
+	margin-top: 4%;
 }
-
-.addpatient #rightfields
+.addpatient #rightfields {
+	float: left;
+	width: 27%;
+}
+#leftfields .ui-controlgroup .ui-radio
 {
-	float:left;
-	width:27%;
+	padding-top:7px;
+padding-left: 7px;
 }
-
-.searchnewbtn
-{
-background-image: url("../images/savennew.png");
-background-repeat: no-repeat;
-height: 45px;
-margin-top: 2%;
-width: 175px;
-text-align: center;
-float: none;
+.searchnewbtn {
+	background-image: url("../images/cont.png");
+	background-repeat: no-repeat;
+	height: 45px;
+	margin-top: 2%;
+	width: 175px;
+	text-align: center;
+	float: none;
+	margin-left: 26%;
 }
-
-
+.searchnewbtn2 {
+	background-image: url("../images/savencont.png");
+	background-repeat: no-repeat;
+	height: 45px;
+	margin-top: 2%;
+	width: 175px;
+	text-align: center;
+	float: none;
+	margin-left: 26%;
+}
 /* Display patient details */
 
 #seldisplay .ui-radio input {
-left: 20px;
+	left: 20px;
+}
+#homebtn .ui-btn {
+	margin: 0;
+	margin-left: 40px;
+}
+
+
+
+/* slider tick */
+.ui-slider-tick-mark{
+display:inline-block;
+width:2px;
+background:black;
+height:16px;
+position:absolute;
+top:-4px;
+}
+
+/*radio button bg */
+.highlight {
+ background: #00B6F1;
+border-radius: 8px !important;
 }

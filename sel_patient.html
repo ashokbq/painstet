@@ -11,10 +11,10 @@
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery.mobile-1.3.0.min.js"></script>
 <script src="js/jquery.validate.js"></script>
-
-<script language="JavaScript" type="text/javascript" src="highcharts.js"></script>
-<script language="JavaScript" type="text/javascript" src="exporting.js"></script>
 <script>
+
+
+
 $(document).ready(function(){
 	var hospid=localStorage.getItem('hospid'); 
 	var hospital_name=localStorage.getItem('hospital_name'); 
@@ -33,39 +33,32 @@ var html="<form><table style='border-top-width: 0px; border-right-width: 0px; bo
 for(i=0;i<total;i++){
  html +='<tr class="alternatecol"><td id="patientid" style="width: 15%;">'+pat_id[i]+'</td><td id="patientname" style="width: 28%;">'+pat_name[i]+'</td><td style="width: 17%;">'+age[i]+'</td><td id="patientdob" style="width: 17%;">'+pat_dob[i]+'</td><td id="patientdiag" style="width: 16%;">'+pat_diag[i]+'</td><td style="width: 16%;"><input type="radio" name="selpatient" id="selpatient'+[i]+'" value="'+[i]+'"></form></td></tr>';
 }
-
 $('.patientdet').append(html);
-$( "#slider" ).slider({
-  stop: function( event, ui ) {
-	  var slider1=$(this).val();
-	 localStorage.setItem('paindensity', slider1); 
-	  if(slider1==5)
-	  {
-		//  alert("5");
-		  $("#slider-label").text("Moderate pain");
-	  }
-	  else if(slider1==10)
-	  {
-		  //alert("10");
-		   $("#slider-label").text("Worst pain")
-	  }
-	  }
-});
 $( "#slider2" ).slider({
   stop: function( event, ui ) {
 	  var slider2=$(this).val();
 	   localStorage.setItem('activity', slider2); 
+	    if(slider2==0)
+	  {
+		  //alert("10");
+		   $("#slider2-label").text("No Interference")
+	  }
 	 if(slider2==10)
 	  {
 		  //alert("10");
 		   $("#slider2-label").text("Unable to carry on any activities")
 	  }
-	  }
+   }	  
 });
 $( "#slider3" ).slider({
   stop: function( event, ui ) {
 	  var slider3=$(this).val();
 	   localStorage.setItem('sleep', slider3); 
+	    if(slider3==0)
+	  {
+		  //alert("10");
+		   $("#slider3-label").text("No Interference")
+	  }
 	 if(slider3==10)
 	  {
 		  //alert("10");
@@ -76,8 +69,7 @@ $( "#slider3" ).slider({
 
 $("input[name='addpatient']").bind( "change", function(event, ui) {
       //  alert($(this).val());
-var radioval=$(this).val();
-
+	var radioval=$(this).val();
  localStorage.setItem('radioval', radioval);
 });
 $("input[name='selpatient']").bind( "change", function(event, ui) {
@@ -92,54 +84,73 @@ var patientdiag = $(this).parents('tr').find('td#patientdiag').text();
  localStorage.setItem('patientdob', patientdob);	  
  localStorage.setItem('patientdiag', patientdiag);	
  /*addpatient */
+var currentTime = new Date()
+var todayd= currentTime.getMonth() + 1 + "/" + currentTime.getDate() + "/" + currentTime.getFullYear();
+
 $('.patid').append(localStorage.getItem('pat_id'));
 $('.patname').append(localStorage.getItem('pat_name'));
-$('.todate').append(localStorage.getItem('patientdob'));  
+$('.todate').append(todayd);  
 });
 $('#selectbtn').click(function()
 {
-alert(localStorage.getItem('pat_id'));
-window.location="sel_patient.html#seladd";
+if (!$("input[name='selpatient']").is(':checked')) {
+   alert('No patient selected');
+}
+else {
+  window.location="sel_patient.html#seladd";
+}
 });
 
 /* select and Display */
 $('#displaybtn').click(function()
 {
-	var pat_id=localStorage.getItem('pat_id');	
-	
-var pat_name=localStorage.getItem('pat_name');
+	 $('.viewpatientdet').empty();
+	 $('#seldisplay .patid').empty();
+	 	 $('#seldisplay .patname').empty();
+	  
+	if (!$("input[name='selpatient']").is(':checked')) {
+   alert('No patient selected');
+}
+else {
+	var pat_id=localStorage.getItem('pat_id');		
+	var pat_name=localStorage.getItem('pat_name');
+$('.patid').append("Patient ID: "+pat_id); 
+	$('.patname').append("Patient Name: "+pat_name);
 $.getJSON("http://www.painstet.bqproject.com/get_activities.php?jsoncallback=?&pat_id="+pat_id, function(data){   
 
-var viewdet="<form><table style='border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; width:90%;'><tbody><tr><td style='width: 15%;color:#FFF;text-align:center;' bgcolor='00b6f0'>Month</td><td style='width: 28%;color:#FFF;text-align:center;' bgcolor='00b6f0'>Name</td><td style='width: 17%;color:#FFF;text-align:center;' bgcolor='00b6f0'>Face</td><td style='width: 17%;color:#FFF;text-align:center;' bgcolor='00b6f0'>Pain density</td><td style='width: 16%;color:#FFF;text-align:center;' bgcolor='00b6f0'>Activity</td><td style='width: 16%;color:#FFF;text-align:center;' bgcolor='00b6f0'>Sleep</td></tr>";
-var count=data.length;
-	  $.each(data,function(i,item){	alert(item.sleep);
-viewdet +='<tr class="alternatecol"><td id="month" style="width: 15%;">'+item.date+'</td><td id="patname" style="width: 17%;">'+pat_name+'</td><td id="face" style="width: 17%;">'+item.face+'</td><td id="pain_density" style="width: 17%;">'+item.pain_density+'</td><td id="tdativity" style="width: 17%;">'+item.activity+'</td><td id="sleep" style="width: 16%;">'+item.sleep+'</td><td style="width: 16%;"></form></td></tr>';		  
+var viewdet="<form><table style='border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; width:90%;'><tbody><tr><td style='width: 15%;color:#FFF;text-align:center;' bgcolor='00b6f0'>Month</td><td style='width: 28%;color:#FFF;text-align:center;' bgcolor='00b6f0'>Name</td><td style='width: 17%;color:#FFF;text-align:center;' bgcolor='00b6f0'>Face</td><td style='width: 16%;color:#FFF;text-align:center;' bgcolor='00b6f0'>Activity</td><td style='width: 16%;color:#FFF;text-align:center;' bgcolor='00b6f0'>Sleep</td></tr>";
+
+	  $.each(data,function(i,item){	
+viewdet +='<tr class="alternatecol"><td id="month" style="width: 15%;">'+item.date+'</td><td id="patname" style="width: 17%;">'+pat_name+'</td><td id="face" style="width: 17%;">'+item.face+'</td><td id="tdativity" style="width: 17%;">'+item.activity+'</td><td id="sleep" style="width: 16%;">'+item.sleep+'</td></tr>';		  
 	  });
 	  $('.viewpatientdet').append(viewdet);
 	});
 	
 	window.location="sel_patient.html#seldisplay";
+}
 });
-
-
-
 $('#searchagnbtn').click(function()
 {	
 	window.location="searchpatient.html";
 });
 $('#searchnewbtn').click(function()
 {
+	if (!$("input[name='addpatient']").is(':checked')) {
+   alert('No value selected');
+}
+else {
 window.location="sel_patient.html#seladdtwo";
+}
 });
 $('#searchnewbtn2').click(function()
 {
 	var pat_id=localStorage.getItem('pat_id');
 	var radioval=localStorage.getItem('radioval');
-	var paindensity=localStorage.getItem('paindensity'); 
+
 	var activity=localStorage.getItem('activity'); 
 	var sleep=localStorage.getItem('sleep');
-	$.getJSON("http://www.painstet.bqproject.com/patient_activity.php?jsoncallback=?&pat_id="+pat_id+"&radioval="+radioval+"&paindensity="+paindensity+"&activity="+activity+"&sleep="+sleep, function(data){   
-	alert(data['msg']);
+	$.getJSON("http://www.painstet.bqproject.com/patient_activity.php?jsoncallback=?&pat_id="+pat_id+"&radioval="+radioval+"&activity="+activity+"&sleep="+sleep, function(data){   
+	//alert(data['msg']);
 	window.location="sel_patient.html";
 	});
 });
@@ -147,56 +158,46 @@ $('#searchnewbtn2').click(function()
 
 /* Graph Display */
 
-/*var patid=localStorage.getItem('pat_id');
-$.getJSON("http://www.painstet.bqproject.com/reports.php?jsoncallback=?&patid="+patid, function(data){  
-var patientdata=data;
-alert(patientdata);
-localStorage.setItem('patientdata', patientdata);	
-	});*/
-	var patid=localStorage.getItem('pat_id')
-$.getJSON("http://www.painstet.bqproject.com/reports.php?jsoncallback=?&patid="+patid, function(result){  
-var patientdata=result;
- $('#graphcontainer').highcharts({
-			 data: {
-                data: result
-            },	 	 
-            chart: {
+		var patid=localStorage.getItem('pat_id');
+		var url = 'http://www.painstet.bqproject.com/reports.php?patid='+patid+'&callback=?'; 
+  $.getJSON(url, function(json){
+	 //alert(json); 
+
+             $('#graphcontainer').highcharts({
+			 chart: {
                 type: 'line'
             },
+            title: {
+                text: 'Patient History'
+            },
+           
             xAxis: {
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
             },
-           yAxis: {
-                title: {
-                    text: ''
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
+            yAxis: {
+               categories: ['0','1', '2', '3', '4', '5', '6', '7', '8', '9']
             },
-            tooltip: {
-                valueSuffix: '°C'
-            },
-			 plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }],
+            
             plotOptions: {
                 line: {
                     dataLabels: {
                         enabled: true
                     },
-                    enableMouseTracking: false
+                    enableMouseTracking: true
                 }
-            }
-		          
-        });
-		
+            },
+            series: json         		          
+        });		       
+  });		
+  
+
+ $('#leftfields input:radio').change(function(){
+        $('div.highlight').removeClass('highlight');
+        $(this).closest('div').addClass('highlight');
+    });
+
 });
-});
+
 </script>
 </head>
 <body>
@@ -209,20 +210,17 @@ var patientdata=result;
       <div class="lblue"> </div>
     </header>
     <div class="clear"> </div>
-    <div class="patientdet">
-
-    </div> 
-      <div class="buttoncontainer">
-        <div class="selectbtn">
-          <input type="button" value="" id="selectbtn"/>
-        </div>
-        <div class="displaybtn">
-          <input type="button" value="" id="displaybtn"/>
-        </div>
-        <div class="searchagnbtn">
-          <input type="button" value="" id="searchagnbtn"/>
-        </div>
-     
+    <div class="patientdet"> </div>
+    <div class="buttoncontainer">
+      <div class="selectbtn">
+        <input type="button" value="" id="selectbtn"/>
+      </div>
+      <div class="displaybtn">
+        <input type="button" value="" id="displaybtn"/>
+      </div>
+      <div class="searchagnbtn">
+        <input type="button" value="" id="searchagnbtn"/>
+      </div>
     </div>
   </div>
   <!-- content --> 
@@ -245,10 +243,10 @@ var patientdata=result;
       <p> Please mark the number or face that best represents your average pain 
         intensity over the past one week on a 0-10 scale where 0=no pain as intense as you can imagine </p>
       <div id="leftfields">
-        <form>
+        <form name="faceform">
           <fieldset data-role="controlgroup" data-type="horizontal">
             <label id="nohurt">
-            <input type="radio" name="addpatient" id="no-hurt" value="0">
+            <input type="radio" name="addpatient" id="no-hurt" value="0" >
             <label for="no-hurt">&nbsp;</label>
             </label>
             <label id="lillbit">
@@ -272,20 +270,14 @@ var patientdata=result;
             <label for="hurts-worst">&nbsp;</label>
             </label>
           </fieldset>
-          <label id="slidingcont">
-          <label for="slider">No Pain:</label>
-          <input data-type="range" name="slider" id="slider" data-mini="true" min="0" max="10" value="0">
-          </label>
         </form>
       </div>
       <div id="rightfields"> <img src="images/human.png" /> </div>
     </div>
     <div class="clear"> </div>
-    <center>
-      <div class="searchnewbtn">
-        <input type="button" value="" id="searchnewbtn"/>
-      </div>
-    </center>
+    <div class="searchnewbtn">
+      <input type="button" value="" id="searchnewbtn"/>
+    </div>
   </div>
 </article>
 <!--2 page -->
@@ -302,57 +294,86 @@ var patientdata=result;
       <h3 class="todate"> Date: </h3>
     </header>
     <div class="clear"> </div>
-    <div class="addpatient">
+    <div class="addpatient" id="sliderstyle">
       <p> In the last week, how much as pain interfered with your daily activities? Use a scale from
         0 to 10, where 0 is “no interference” and 10 is “ unable to carry on any activities”?</p>
       <div id="leftfields">
         <form>
-          <label id="slidingcont">
           <label for="slider2">No Interference</label>
-          <input data-type="range" name="slider2" id="slider2" data-mini="true" min="0" max="10" value="0">
+          <ul class="arrVals">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+          </ul>
+          <div class="clear"> </div>
+          <input data-type="range" name="slider2" id="slider2" data-mini="true" data-highlight="true" min="0" max="10" value="0">
           </label>
         </form>
-        <p>In the last week, how much as pain interfered with your daily activities? Use a scale from
-          0 to 10, where 0 is “no interference” and 10 is “completely interferes”? </p>
-        <form>
-          <label id="slidingcont">
-          <label for="slider3">No Interference</label>
-          <input data-type="range" name="slider3" id="slider3" data-mini="true" min="0" max="10" value="0">
-          </label>
-        </form>
+        <div class="clear"></div>
+        <div style="margin-top: 5%;">
+          <form>
+            <p>In the last week, how much as pain interfered with your daily activities? Use a scale from
+              0 to 10, where 0 is “no interference” and 10 is “completely interferes”? </p>
+            <label id="slidingcont">
+            <label for="slider3">No Interference</label>
+            <ul class="arrVals">
+              <li>0</li>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+            </ul>
+            <div class="clear"> </div>
+            <input data-type="range" name="slider3" id="slider3" data-mini="true" data-highlight="true" min="0" max="10" value="0">
+            </label>
+          </form>
+        </div style="margin-top: 12%;">
       </div>
       <div id="rightfields"> <img src="images/nointerference.png" /> <img src="images/sleep.png" /> </div>
     </div>
     <div class="clear"> </div>
-    <center>
-      <div class="searchnewbtn">
-        <input type="button" value="" id="searchnewbtn2"/>
-      </div>
-    </center>
+    <div class="searchnewbtn2">
+      <input type="button" value="" id="searchnewbtn2"/>
+    </div>
   </div>
 </article>
 <!--3 page -->
-
-
-<article id="seldisplay" data-role="page" class="container">
-   <div data-role="content" class="content">
+<article id="seldisplay" data-role="page" class="container" >
+  <div data-role="content" class="content">
     <header>
       <div class="dblue">
         <h2> view patient details</h2>
       </div>
       <div class="lblue"> </div>
-       <div class="clear"> </div>
+      <div class="clear"> </div>
       <h3 class="patid"> Patient ID: </h3>
       <h3 class="patname"> Patient Name: </h3>
       <div id="homebtn">
-      <div class="ui-block-a"><a href="patientmgmt.html" data-role="button" rel="external" id="patient_add"><img src="images/homtbtn.png" width="175" height="45"/> </a></div>
-    </div>
+        <div class="ui-block-a"><a href="patientmgmt.html" data-role="button" rel="external" id="patient_add"><img src="images/homtbtn.png" width="175" height="45"/> </a></div>
+      </div>
     </header>
     <div class="clear"> </div>
     <div class="viewpatientdet"> </div>
-    <div id="graphcontainer" style="height: 400px; margin: 0 auto"> </div>
+    <div class="clear"> </div>
+    <div id="graphcontainer" style="height: 400px;width:800px;margin-top:2%"> </div>
   </div>
 </article>
-<!--4 page -->
+<!--4 page --> 
+<script src="js/highcharts.js"></script> 
+<script src="js/exporting.js"></script>
 </body>
 </html>
